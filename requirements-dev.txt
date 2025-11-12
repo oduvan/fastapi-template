@@ -1,0 +1,20 @@
+# Development tools - install in a separate virtualenv
+# Requires: Python 3.8+ (your local Python version)
+# Note: Docker containers use Python 3.14, but pre-commit uses local Python
+#
+# Quick setup: make setup-dev
+# Or manually:
+#   python3 -m venv .venv-dev
+#   source .venv-dev/bin/activate
+#   pip install -r requirements-dev.txt
+#   pre-commit install
+
+# Pre-commit hooks
+pre-commit==4.4.0
+
+# Code formatting and linting
+black==25.11.0
+ruff==0.14.4
+
+# Security scanning
+bandit[toml]==1.8.1
