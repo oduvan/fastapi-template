@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import Depends
 from fastapi_users import BaseUserManager, FastAPIUsers, IntegerIDMixin
 from fastapi_users.authentication import (
@@ -12,19 +14,21 @@ from app.core.config import settings
 from app.db.session import get_async_session
 from app.models.user import User
 
+logger = logging.getLogger(__name__)
+
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     reset_password_token_secret = settings.SECRET_KEY
     verification_token_secret = settings.SECRET_KEY
 
     async def on_after_register(self, user: User, request: dict | None = None):
-        print(f"User {user.id} has registered.")
+        logger.info(f"User {user.id} has registered.")
 
     async def on_after_forgot_password(self, user: User, token: str, request: dict | None = None):
-        print(f"User {user.id} has forgot their password. Reset token: {token}")
+        logger.info(f"User {user.id} has forgot their password. Reset token: {token}")
 
     async def on_after_request_verify(self, user: User, token: str, request: dict | None = None):
-        print(f"Verification requested for user {user.id}. Verification token: {token}")
+        logger.info(f"Verification requested for user {user.id}. Verification token: {token}")
 
 
 async def get_user_db(session: AsyncSession = Depends(get_async_session)):

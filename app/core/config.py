@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     CELERY_RESULT_BACKEND: str = "redis://localhost:6379/2"
 
     # Security
-    SECRET_KEY: str = "your-secret-key-change-this-in-production"
+    SECRET_KEY: str = "CHANGE-THIS-TO-A-SECURE-RANDOM-SECRET-KEY-IN-PRODUCTION"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 

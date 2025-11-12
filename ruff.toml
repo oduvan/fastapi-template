@@ -2,7 +2,7 @@
 # https://docs.astral.sh/ruff/configuration/
 
 # Python version
-target-version = "py314"
+target-version = "py312"
 
 # Line length
 line-length = 100
