@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - FastAPI Template{% endblock %}
+
+{% block content %}
+<div class="welcome-page">
+    <h2>Welcome to FastAPI Template! 🚀</h2>
+
+    <p class="intro">
+        A modern, production-ready FastAPI project template with full-stack features including
+        WebSocket support, background task processing, user authentication, and admin panel.
+    </p>
+
+    <section class="features">
+        <h3>Features</h3>
+        <div class="feature-grid">
+            {% for feature in features %}
+            <div class="feature-card">
+                <h4>{{ feature.name }}</h4>
+                <p>{{ feature.description }}</p>
+                {% if feature.docs_url %}
+                <a href="{{ feature.docs_url }}" target="_blank">Learn more →</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="/docs">📖 Interactive API Documentation (Swagger UI)</a></li>
+            <li><a href="/redoc">📚 Alternative API Documentation (ReDoc)</a></li>
+            <li><a href="/admin">⚙️ Admin Panel (SQLAdmin)</a></li>
+            <li><a href="{{ api_base }}/health">💚 Health Check</a></li>
+            <li><a href="{{ api_base }}/ws" target="_blank">🔌 WebSocket Endpoint</a></li>
+        </ul>
+    </section>
+
+    <section class="stats">
+        <h3>Project Info</h3>
+        <div class="stats-grid">
+            <div class="stat">
+                <span class="stat-label">Version</span>
+                <span class="stat-value">{{ version }}</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Python</span>
+                <span class="stat-value">{{ python_version }}</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Environment</span>
+                <span class="stat-value">{{ environment }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="getting-started">
+        <h3>Getting Started</h3>
+        <div class="code-block">
+            <pre><code># Clone the repository
+git clone git@github.com:oduvan/fastapi-template.git
+cd fastapi-template
+
+# Start with Docker
+make install
+
+# Or setup development environment
+make setup-dev</code></pre>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <h3>Tech Stack</h3>
+        <div class="tech-tags">
+            {% for tech in tech_stack %}
+            <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

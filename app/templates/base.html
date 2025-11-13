@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Cvitanok{% endblock %}</title>
+    <title>{% block title %}FastAPI Template{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header>
-        <h1>Cvitanok</h1>
-    </header>
+    <div class="container">
+        <header>
+            <nav>
+                <h1><a href="/">FastAPI Template</a></h1>
+                <ul>
+                    <li><a href="/welcome">Welcome</a></li>
+                    <li><a href="/docs">API Docs</a></li>
+                    <li><a href="/admin">Admin</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
 
-    <footer>
-        <p>&copy; 2025 Cvitanok</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 FastAPI Template Project</p>
+            <p>
+                <a href="https://github.com/oduvan/fastapi-template">GitHub</a> |
+                <a href="/docs">API Documentation</a>
+            </p>
+        </footer>
+    </div>
 
     {% block extra_js %}{% endblock %}
 </body>

@@ -1,4 +1,4 @@
-.PHONY: help build up down restart logs logs-web logs-db logs-celery-worker logs-celery-beat ps shell shell-db test test-cov migrate migrate-auto migrate-down clean clean-volumes rebuild
+.PHONY: help build up down restart logs logs-web logs-db logs-celery-worker logs-celery-beat ps shell shell-db test test-cov migrate migrate-auto migrate-down clean clean-volumes rebuild manage count-users list-users
 
 # Default target
 .DEFAULT_GOAL := help
@@ -100,6 +100,22 @@ migrate-history: ## Show migration history
 
 migrate-current: ## Show current migration
 	$(DOCKER_EXEC) $(WEB_SERVICE) alembic current
+
+# Management Commands
+manage: ## Run management command (e.g., make manage ARGS="db count-users")
+	@$(DOCKER_EXEC) $(WEB_SERVICE) python manage.py $(ARGS)
+
+count-users: ## Show total number of users
+	@echo "$(BLUE)Counting users...$(NC)"
+	@$(DOCKER_EXEC) $(WEB_SERVICE) python manage.py db count-users
+
+list-users: ## List users (e.g., make list-users LIMIT=20)
+	@echo "$(BLUE)Listing users...$(NC)"
+	@if [ -z "$(LIMIT)" ]; then \
+		$(DOCKER_EXEC) $(WEB_SERVICE) python manage.py db list-users; \
+	else \
+		$(DOCKER_EXEC) $(WEB_SERVICE) python manage.py db list-users --limit $(LIMIT); \
+	fi
 
 # Testing
 test: ## Run tests
