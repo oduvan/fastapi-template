@@ -1,9 +1,12 @@
+import logging
+
 from fastapi import APIRouter, Depends, WebSocket, WebSocketDisconnect
 
 from app.core.security import current_active_user
 from app.models.user import User
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 @router.get("/health")
@@ -27,4 +30,4 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_text()
             await websocket.send_text(f"Message received: {data}")
     except WebSocketDisconnect:
-        print("Client disconnected")
+        logger.info("WebSocket client disconnected")

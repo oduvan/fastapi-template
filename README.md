@@ -1,7 +1,7 @@
 # Cvitanok
 
 [![Tests](https://github.com/oduvan/fastapi-template/actions/workflows/tests.yml/badge.svg)](https://github.com/oduvan/fastapi-template/actions/workflows/tests.yml)
-[![Python 3.14](https://img.shields.io/badge/python-3.14-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
@@ -73,7 +73,7 @@ cvitanok/
 ### Prerequisites
 
 - Docker and Docker Compose
-- Python 3.14 (for local development)
+- Python 3.12+ (for local development)
 - Make (optional, for using Makefile commands)
 
 ### Setup
@@ -135,7 +135,7 @@ Pre-commit will automatically run on every commit to check:
 **Note:**
 - Pre-commit runs in your local environment, not in Docker
 - It will use your local Python version (Python 3.8+ required)
-- The Docker containers run Python 3.14, but pre-commit uses your local Python
+- The Docker containers run Python 3.12, but pre-commit uses your local Python
 - Keep `.venv-dev` activated while developing
 
 ### Running with Docker
